@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1l11knagxrv7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4i6l3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t8he1"]
+
+[node name="Tower" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("SphereMesh_4i6l3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_t8he1")
