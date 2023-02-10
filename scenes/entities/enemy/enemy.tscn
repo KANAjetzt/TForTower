@@ -8,11 +8,14 @@ albedo_color = Color(0.490196, 0.133333, 0.137255, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_7fi2e"]
 material = SubResource("StandardMaterial3D_v54la")
-height = 0.706
+radius = 0.3
+height = 0.4
 radial_segments = 4
 rings = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t8he1"]
+margin = 0.1
+radius = 0.35
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_7ahoa")
