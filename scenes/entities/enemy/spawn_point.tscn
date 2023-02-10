@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://vbogwyleus7b"]
+
+[ext_resource type="Script" path="res://scenes/entities/enemy/spawn_point.gd" id="1_r4bim"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_moi7d"]
+size = Vector3(2.5, 2, 1.5)
+
+[node name="SpawnPoint" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.517188, 7.5939)
+mesh = SubResource("PrismMesh_moi7d")
+skeleton = NodePath("../Ground")
+script = ExtResource("1_r4bim")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

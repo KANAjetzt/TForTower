@@ -18,6 +18,9 @@ margin = 0.1
 radius = 0.35
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_7ahoa")
 
 [node name="Pivot" type="Node3D" parent="."]
