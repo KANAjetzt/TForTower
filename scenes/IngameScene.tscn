@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cik30de5gaaah"]
+
+[ext_resource type="Script" path="res://scenes/IngameScene.gd" id="1_objyc"]
+[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/FadeOverlay.tscn" id="1_y6ebv"]
+[ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/PauseOverlay.tscn" id="3_8o178"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_abk1s"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lm3qn"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hpxuk"]
+radius = 2.0
+height = 2.0
+
+[node name="Main" type="Node"]
+script = ExtResource("1_objyc")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="FadeOverlay" parent="UI" instance=ExtResource("1_y6ebv")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseOverlay" parent="UI" instance=ExtResource("3_8o178")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_abk1s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_lm3qn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.604432, 0.796657, 0, -0.796657, -0.604432, 0, 7.4, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_hpxuk")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.2628, 0)
