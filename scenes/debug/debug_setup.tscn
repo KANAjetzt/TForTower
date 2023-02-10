@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bd4hvjix1ifa2"]
+
+[node name="Debug" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.561058, -0.298347, 0.772142, 0, 0.93279, 0.36042, -0.827776, -0.202217, 0.523349, 2.44539, 0.986629, 1.75807)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 6, 6)

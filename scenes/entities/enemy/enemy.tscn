@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://uu7t4rcyualf"]
+
+[ext_resource type="Script" path="res://scenes/entities/enemy/enemy.gd" id="1_7ahoa"]
+[ext_resource type="PackedScene" uid="uid://bd4hvjix1ifa2" path="res://scenes/debug/debug_setup.tscn" id="2_gikv8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v54la"]
+albedo_color = Color(0.490196, 0.133333, 0.137255, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7fi2e"]
+material = SubResource("StandardMaterial3D_v54la")
+height = 0.706
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t8he1"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_7ahoa")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("SphereMesh_7fi2e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0738159, 0)
+shape = SubResource("SphereShape3D_t8he1")
+
+[node name="Debug" parent="." instance=ExtResource("2_gikv8")]
+visible = false
