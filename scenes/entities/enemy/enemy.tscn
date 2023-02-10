@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://uu7t4rcyualf"]
+[gd_scene load_steps=5 format=3 uid="uid://uu7t4rcyualf"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemy/enemy.gd" id="1_7ahoa"]
-[ext_resource type="PackedScene" uid="uid://bd4hvjix1ifa2" path="res://scenes/debug/debug_setup.tscn" id="2_gikv8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v54la"]
 albedo_color = Color(0.490196, 0.133333, 0.137255, 1)
@@ -17,8 +16,8 @@ rings = 1
 margin = 0.1
 radius = 0.35
 
-[node name="Enemy" type="CharacterBody3D"]
-collision_layer = 0
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_7ahoa")
@@ -31,6 +30,3 @@ mesh = SubResource("SphereMesh_7fi2e")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0738159, 0)
 shape = SubResource("SphereShape3D_t8he1")
-
-[node name="Debug" parent="." instance=ExtResource("2_gikv8")]
-visible = false

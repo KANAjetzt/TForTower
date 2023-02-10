@@ -6,8 +6,6 @@ extends Node
 @onready var pause_overlay = %PauseOverlay
 
 @onready var base = $Base
-@onready var enemy_spawn_location_0 = $SpawnPath_0/SpawnLocation
-@onready var enemy_spawn_location_1 = $SpawnPath_1/SpawnLocation
 @onready var spawn_point = $SpawnManager/SpawnPoint
 
 
