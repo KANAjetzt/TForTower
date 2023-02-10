@@ -32,7 +32,7 @@ func _input(event) -> void:
 func _save_game() -> void:
 	SaveGame.save_game(get_tree())
 
-func _on_spawn_point_spawn():
-	var enemy = spawn_point.enemy_type.instantiate()
-	enemy.initialize(spawn_point.position, base.position)
+func _on_spawn_point_spawn(spawner_instance):
+	var enemy = spawner_instance.enemy_type.instantiate()
+	enemy.initialize(spawner_instance.position, base.position)
 	add_child(enemy)
