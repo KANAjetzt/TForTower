@@ -7,7 +7,8 @@ extends Node3D
 
 @onready var camera = $Camera3D
 @onready var base = $Base
-@onready var tower = $Tower
+@onready var tower_preview = $TowerPreview
+@onready var towers = $Base/Towers
 @onready var spawn_point = $SpawnManager/SpawnPoint
 
 func _physics_process(delta):
@@ -24,7 +25,7 @@ func _physics_process(delta):
 	
 	if raycast_result.collider == base:
 		print(raycast_result)
-		tower.position = Vector3(raycast_result.position.x, 1.0, raycast_result.position.z)
+		tower_preview.position = Vector3(raycast_result.position.x, 1.0, raycast_result.position.z)
 
 
 func _ready() -> void:
@@ -42,6 +43,12 @@ func _input(event) -> void:
 		get_tree().paused = true
 		pause_overlay.grab_focus()
 		pause_overlay.visible = true
+	
+	if event.is_action_pressed('place_tower') and not pause_overlay.visible:
+		var new_tower = preload("res://scenes/entities/tower/tower.tscn").instantiate()
+		new_tower.position = tower_preview.position
+		towers.add_child(new_tower)
+		
 		
 func _save_game() -> void:
 	SaveGame.save_game(get_tree())
