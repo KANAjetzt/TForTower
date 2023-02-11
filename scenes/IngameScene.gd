@@ -1,14 +1,30 @@
-extends Node
+extends Node3D
 
 @export var enemy_scene: PackedScene
 
 @onready var fade_overlay = %FadeOverlay
 @onready var pause_overlay = %PauseOverlay
 
+@onready var camera = $Camera3D
 @onready var base = $Base
+@onready var tower = $Tower
 @onready var spawn_point = $SpawnManager/SpawnPoint
 
-
+func _physics_process(delta):
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 100
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	ray_query.collide_with_areas = true
+	var raycast_result = space.intersect_ray(ray_query)
+	
+	if raycast_result.collider == base:
+		print(raycast_result)
+		tower.position = Vector3(raycast_result.position.x, 1.0, raycast_result.position.z)
 
 
 func _ready() -> void:

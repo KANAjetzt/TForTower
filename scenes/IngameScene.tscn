@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=15 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/IngameScene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/FadeOverlay.tscn" id="1_y6ebv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://uu7t4rcyualf" path="res://scenes/entities/enemy/enemy.tscn" id="4_7jyn3"]
 [ext_resource type="Script" path="res://scenes/Base.gd" id="5_1ciqe"]
 [ext_resource type="PackedScene" uid="uid://vbogwyleus7b" path="res://scenes/entities/enemy/spawn_point.tscn" id="5_kx6d5"]
+[ext_resource type="PackedScene" uid="uid://c1l11knagxrv7" path="res://scenes/entities/tower/tower.tscn" id="5_on74d"]
 [ext_resource type="Script" path="res://scenes/SpawnManager.gd" id="5_wchph"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_abk1s"]
@@ -19,25 +20,18 @@ material = SubResource("StandardMaterial3D_067vw")
 size = Vector3(160, 2, 160)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8mosr"]
-height = 1.0
-radius = 2.0
+height = 2.13721
+radius = 4.92715
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_em27w"]
 albedo_color = Color(0.317647, 0.317647, 0.317647, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_hpxuk"]
 material = SubResource("StandardMaterial3D_em27w")
-radius = 2.0
-height = 2.0
+radius = 5.0
+height = 3.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qdk8"]
-albedo_color = Color(1, 0.439216, 0.180392, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_5t0pk"]
-material = SubResource("StandardMaterial3D_5qdk8")
-radius = 25.0
-
-[node name="Main" type="Node"]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_objyc")
 enemy_scene = ExtResource("4_7jyn3")
 
@@ -65,6 +59,9 @@ shape = SubResource("BoxShape3D_abk1s")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_lm3qn")
 
+[node name="Tower" parent="Ground" instance=ExtResource("5_on74d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80455, 0)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.604432, 0.796657, 0, -0.796657, -0.604432, 0, 7.4, 0)
 shadow_enabled = true
@@ -82,13 +79,11 @@ shape = SubResource("CylinderShape3D_8mosr")
 mesh = SubResource("SphereMesh_hpxuk")
 skeleton = NodePath("../..")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.7054, 0)
-current = true
+[node name="Towers" type="Node3D" parent="Base"]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("SphereMesh_5t0pk")
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 19.8929, 0)
+current = true
 
 [node name="SpawnManager" type="Node3D" parent="."]
 script = ExtResource("5_wchph")
@@ -111,6 +106,9 @@ speed = 10.0
 enemy_type = ExtResource("4_7jyn3")
 
 [node name="Enemy" parent="." instance=ExtResource("4_7jyn3")]
+
+[node name="Tower" parent="." instance=ExtResource("5_on74d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41686, 0)
 
 [connection signal="spawn" from="SpawnManager/SpawnPoint" to="." method="_on_spawn_point_spawn"]
 [connection signal="spawn" from="SpawnManager/SpawnPoint2" to="." method="_on_spawn_point_spawn"]
