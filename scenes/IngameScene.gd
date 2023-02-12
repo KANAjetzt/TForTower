@@ -11,6 +11,9 @@ extends Node3D
 @onready var towers = $Base/Towers
 @onready var spawn_point = $SpawnManager/SpawnPoint
 
+
+# Godot 4: How to cast a ray from mouse_position, towards camera orientation in 3D?
+# https://godotengine.org/qa/134656/godot-cast-from-mouse_position-towards-camera-orientation
 func _physics_process(delta):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 100
@@ -22,6 +25,9 @@ func _physics_process(delta):
 	ray_query.to = to
 	ray_query.collide_with_areas = true
 	var raycast_result = space.intersect_ray(ray_query)
+	
+	if not raycast_result.has("collider"):
+		return
 	
 	if raycast_result.collider == base:
 		print(raycast_result)

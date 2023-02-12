@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Utils="*res://autoloads/Utils.gd"
 UserSettings="*res://settings/UserSettings.gd"
 
 [display]

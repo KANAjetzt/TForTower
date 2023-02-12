@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj27xwsyji0o2"]
+
+[ext_resource type="Script" path="res://scenes/global/Range.gd" id="1_gp28k"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ude8k"]
+height = 5.0
+radius = 30.0
+
+[node name="Range" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_gp28k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_ude8k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

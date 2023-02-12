@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=16 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/IngameScene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/FadeOverlay.tscn" id="1_y6ebv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://uu7t4rcyualf" path="res://scenes/entities/enemy/enemy.tscn" id="4_7jyn3"]
 [ext_resource type="Script" path="res://scenes/Base.gd" id="5_1ciqe"]
 [ext_resource type="PackedScene" uid="uid://vbogwyleus7b" path="res://scenes/entities/enemy/spawn_point.tscn" id="5_kx6d5"]
+[ext_resource type="PackedScene" uid="uid://b2myitpokleme" path="res://scenes/entities/tower/tower.tscn" id="5_on74d"]
 [ext_resource type="Script" path="res://scenes/SpawnManager.gd" id="5_wchph"]
 [ext_resource type="PackedScene" uid="uid://q3vegpyprm4d" path="res://scenes/entities/tower/tower_preview.tscn" id="8_2di0l"]
 
@@ -77,6 +78,9 @@ mesh = SubResource("SphereMesh_hpxuk")
 skeleton = NodePath("../..")
 
 [node name="Towers" type="Node3D" parent="Base"]
+
+[node name="Tower" parent="Base/Towers" instance=ExtResource("5_on74d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 26.8054, 0)

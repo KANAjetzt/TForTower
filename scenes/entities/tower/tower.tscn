@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1l11knagxrv7"]
+[gd_scene load_steps=6 format=3 uid="uid://b2myitpokleme"]
+
+[ext_resource type="Script" path="res://scenes/entities/tower/tower.gd" id="1_3uwct"]
+[ext_resource type="PackedScene" uid="uid://dj27xwsyji0o2" path="res://scenes/global/Range.tscn" id="2_ojko3"]
+[ext_resource type="PackedScene" uid="uid://bhh00keigfj03" path="res://scenes/entities/tower/weapons/weapon.tscn" id="3_2qpsl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ip6se"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t5dty"]
 
 [node name="Tower" type="CharacterBody3D"]
+script = ExtResource("1_3uwct")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -15,3 +20,11 @@ mesh = SubResource("CapsuleMesh_ip6se")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_t5dty")
+
+[node name="Weapons" type="Node3D" parent="."]
+
+[node name="Weapon" parent="Weapons" instance=ExtResource("3_2qpsl")]
+
+[node name="Range" parent="." instance=ExtResource("2_ojko3")]
+
+[connection signal="closest_changed" from="." to="Weapons/Weapon" method="_on_tower_closest_changed"]

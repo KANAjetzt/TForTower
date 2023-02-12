@@ -1,8 +1,5 @@
 extends CharacterBody3D
 
-@onready var tower = $Towers/Tower
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -25,16 +22,3 @@ func _physics_process(delta):
 		if collision.get_collider().is_in_group("enemy"):
 			var enemy = collision.get_collider()
 			enemy.remove()
-
-
-#func _on_input_event(camera, event, position, normal, shape_idx):	
-#
-#	if event is InputEventMouseMotion:
-#		print(event)
-#		print("I LIKE TO MOVE IT!")
-#		print(tower.position)
-#
-#
-#	if event is InputEventMouseButton:
-#		print(event)
-#		print("CLICKIDY!")
