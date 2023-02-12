@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 signal removed
 
-var speed:= 20.0
+var speed:= 5.0
 var hp := 100
 var is_alive := true
 

@@ -9,3 +9,12 @@ static func array_clean(array) -> void:
 			if not is_instance_valid(element):
 				array.remove_at(i)
 				break
+
+func instance_on_main(scene: PackedScene, position: Vector3) -> Node:
+	var main = get_tree().current_scene
+	var instance = scene.instantiate()
+	main.add_child(instance)
+	
+	instance.global_position = position
+	
+	return instance

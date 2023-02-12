@@ -1,16 +1,22 @@
 extends Node3D
 
+@export var projectial : PackedScene
+
 var target_current : PhysicsBody3D = null
 var target_closest : PhysicsBody3D = null
-var is_shooting := false
+var damage := 25
+var krit_multiplier := 2.0
 
 func shoot(target):
 	print("SHOOTING")
 	# shot at target
 	
 	# spawn projectile
+	# set position to global tower position
+	var new_projectial = Utils.instance_on_main(projectial, global_position)
 	
 	# projectile fly to target
+	new_projectial.fly_to_target(target)
 	
 	# give target damage on projectile hit
 

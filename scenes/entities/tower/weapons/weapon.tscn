@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhh00keigfj03"]
+[gd_scene load_steps=3 format=3 uid="uid://bhh00keigfj03"]
 
 [ext_resource type="Script" path="res://scenes/entities/tower/weapons/Weapon.gd" id="1_simfm"]
+[ext_resource type="PackedScene" uid="uid://ca34sdmogkad5" path="res://scenes/projectiles/projectile.tscn" id="2_jictd"]
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_simfm")
+projectial = ExtResource("2_jictd")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.25
