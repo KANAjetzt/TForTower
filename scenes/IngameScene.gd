@@ -30,7 +30,6 @@ func _physics_process(delta):
 		return
 	
 	if raycast_result.collider == base:
-		print(raycast_result)
 		tower_preview.position = Vector3(raycast_result.position.x, 1.0, raycast_result.position.z)
 
 

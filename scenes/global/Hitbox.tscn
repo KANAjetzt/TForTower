@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhgs14dkokpdv"]
+
+[ext_resource type="Script" path="res://scenes/global/Hitbox.gd" id="1_f5ifr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8t1ts"]
+
+[node name="Hitbox" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_f5ifr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8t1ts")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -14,7 +14,7 @@ rings = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t8he1"]
 margin = 0.1
-radius = 0.35
+radius = 0.45
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 2
