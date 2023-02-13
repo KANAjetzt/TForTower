@@ -2,11 +2,13 @@ extends CharacterBody3D
 
 signal closest_changed(target: Target)
 
-@onready var range = $Range
-@onready var weapons = $Weapons
+@export var price := 100
+
+@onready var range := $Range
+@onready var weapons := $Weapons
 
 
-var target_closest: Target = Target.new()
+var target_closest := Target.new()
 
 func _ready():
 	get_closest()

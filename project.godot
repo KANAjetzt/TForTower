@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Utils="*res://autoloads/Utils.gd"
 UserSettings="*res://settings/UserSettings.gd"
+RunData="*res://autoloads/run_data.gd"
 
 [display]
 

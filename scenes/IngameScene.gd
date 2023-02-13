@@ -50,9 +50,7 @@ func _input(event) -> void:
 		pause_overlay.visible = true
 	
 	if event.is_action_pressed('place_tower') and not pause_overlay.visible:
-		var new_tower = preload("res://scenes/entities/tower/tower.tscn").instantiate()
-		new_tower.position = tower_preview.position
-		towers.add_child(new_tower)
+		towers.add_tower(tower_preview.position)
 		
 		
 func _save_game() -> void:
