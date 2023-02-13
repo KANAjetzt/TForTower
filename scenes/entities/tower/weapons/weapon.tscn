@@ -8,7 +8,5 @@ script = ExtResource("1_simfm")
 projectial = ExtResource("2_jictd")
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

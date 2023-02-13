@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 signal spawn(spawner_instance)
 
+@export var is_enabled = true
 @export var rate : float = 0.5
 @export var radius : int = 250.0
 @export var speed : float = 2.0
@@ -28,4 +29,5 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	emit_signal("spawn", self)
+	if is_enabled:
+		emit_signal("spawn", self)

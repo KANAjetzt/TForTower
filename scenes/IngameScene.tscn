@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=15 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/IngameScene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/FadeOverlay.tscn" id="1_y6ebv"]
@@ -6,29 +6,26 @@
 [ext_resource type="PackedScene" uid="uid://uu7t4rcyualf" path="res://scenes/entities/enemy/enemy.tscn" id="4_7jyn3"]
 [ext_resource type="Script" path="res://scenes/Base.gd" id="5_1ciqe"]
 [ext_resource type="PackedScene" uid="uid://vbogwyleus7b" path="res://scenes/entities/enemy/spawn_point.tscn" id="5_kx6d5"]
-[ext_resource type="PackedScene" uid="uid://b2myitpokleme" path="res://scenes/entities/tower/tower.tscn" id="5_on74d"]
 [ext_resource type="Script" path="res://scenes/SpawnManager.gd" id="5_wchph"]
+[ext_resource type="Material" uid="uid://cxw8yxg2grl4j" path="res://scenes/Blob_Material.tres" id="6_wh804"]
 [ext_resource type="PackedScene" uid="uid://q3vegpyprm4d" path="res://scenes/entities/tower/tower_preview.tscn" id="8_2di0l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_abk1s"]
 size = Vector3(160, 2, 160)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_067vw"]
-albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i14bd"]
+albedo_color = Color(0.117647, 0.117647, 0.117647, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lm3qn"]
-material = SubResource("StandardMaterial3D_067vw")
-size = Vector3(160, 2, 160)
+material = SubResource("StandardMaterial3D_i14bd")
+size = Vector3(175, 2, 175)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8mosr"]
 height = 2.13721
 radius = 4.92715
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_em27w"]
-albedo_color = Color(0.317647, 0.317647, 0.317647, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_hpxuk"]
-material = SubResource("StandardMaterial3D_em27w")
+material = ExtResource("6_wh804")
 radius = 5.0
 height = 3.0
 
@@ -79,9 +76,6 @@ skeleton = NodePath("../..")
 
 [node name="Towers" type="Node3D" parent="Base"]
 
-[node name="Tower" parent="Base/Towers" instance=ExtResource("5_on74d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 26.8054, 0)
 current = true
@@ -106,8 +100,6 @@ skeleton = NodePath("../../Ground")
 radius = 60
 speed = 10.0
 enemy_type = ExtResource("4_7jyn3")
-
-[node name="Enemy" parent="." instance=ExtResource("4_7jyn3")]
 
 [node name="TowerPreview" parent="." instance=ExtResource("8_2di0l")]
 

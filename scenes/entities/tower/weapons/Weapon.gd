@@ -2,10 +2,16 @@ extends Node3D
 
 @export var projectial : PackedScene
 
+@onready var cooldown = $Cooldown
+
 var target_current : PhysicsBody3D = null
 var target_closest : PhysicsBody3D = null
+var attack_cooldown = 0.25
 var damage := 25
 var krit_multiplier := 2.0
+
+func _ready():
+	cooldown.start(attack_cooldown)
 
 func shoot(target):
 	print("SHOOTING")
